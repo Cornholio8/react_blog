@@ -1,5 +1,5 @@
 import { Button, Row, Col } from "react-bootstrap";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostById } from "../../../redux/store";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import DeleteModal from "../../features/DeleteModal";
 import { deletePost } from "../../../redux/postsRedux";
   
   
-const Post = (props) => {
+const Post = () => {
   
   const { id } = useParams();
   const listData = useSelector(state => getPostById(state, id));
@@ -33,7 +33,7 @@ const Post = (props) => {
         <Col md={8} className='d-flex justify-content-between'>
           <h1>{listData.title}</h1>
           <div>
-            <Button variant='outline-info' className='m-2'>Edit</Button>
+            <Link to={'/post/edit' + id}><Button variant='outline-info' className='m-2'>Edit</Button></Link>
             <Button variant='outline-danger' onClick={handleShowDeleteModal}>Delete</Button>
           </div>
         </Col>

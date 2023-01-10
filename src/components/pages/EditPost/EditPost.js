@@ -1,4 +1,4 @@
-const EditPost = () => {
+/*const EditPost = () => {
     return (
       <div>
         <h1>Edits Post</h1>
@@ -6,4 +6,4 @@ const EditPost = () => {
     );
   }
   
-  export default EditPost;
+  export default EditPost;*/
