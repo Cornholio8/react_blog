@@ -1,4 +1,4 @@
-import PostForm from "../../features/PostForm";
+/*import PostForm from "../../features/PostForm";
 
 const AddPost = () => {
     return (
@@ -9,4 +9,4 @@ const AddPost = () => {
     );
   }
   
-  export default AddPost;
+  export default AddPost;*/

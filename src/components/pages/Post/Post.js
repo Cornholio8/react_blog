@@ -33,7 +33,7 @@ const Post = () => {
         <Col md={8} className='d-flex justify-content-between'>
           <h1>{listData.title}</h1>
           <div>
-            <Link to={'/post/edit' + id}><Button variant='outline-info' className='m-2'>Edit</Button></Link>
+            <Link to={'/post/edit/' + id}><Button variant='outline-info' className='m-2'>Edit</Button></Link>
             <Button variant='outline-danger' onClick={handleShowDeleteModal}>Delete</Button>
           </div>
         </Col>

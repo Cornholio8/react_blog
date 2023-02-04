@@ -1,8 +1,8 @@
-/*const EditPost = () => {
+/*import EditPostForm from "../../features/EditPostForm";
+
+const EditPost = () => {
     return (
-      <div>
-        <h1>Edits Post</h1>
-      </div>
+      <EditPostForm />
     );
   }
   

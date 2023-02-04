@@ -13,7 +13,7 @@ const EditPostForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const postData = useSelector((state) => getPostById(state, postId));
+    const postData = useSelector(state => getPostById(state, postId));
 
     const handleSubmit = post => {
         dispatch(editPost({ ...post, postId }));
@@ -24,7 +24,7 @@ const EditPostForm = () => {
     if(!postData) return <Navigate to="/" />
     return (
         <>
-            <h1>edit post form</h1>
+            <h1>Edit Post Form</h1>
             <PostForm
                 action={handleSubmit}
                 actionText={actionText}
