@@ -5,6 +5,7 @@ import { getPostById } from "../../../redux/store";
 import { useState } from "react";
 import DeleteModal from "../../features/DeleteModal";
 import { deletePost } from "../../../redux/postsRedux";
+import { dateToStr } from "../../../utils/dateToStr";
   
   
 const Post = () => {
@@ -41,8 +42,8 @@ const Post = () => {
       <Row className='justify-content-center'>
         <Col md={8}>
           <p><b>Author: </b>{listData.author}{' '}</p>
-          <p><b>Published: </b> {listData.publishedDate}</p>
-          <p>{ listData.content }</p>
+          <p><b>Published: </b> {dateToStr(listData.publishedDate)}</p>
+          <p dangerouslySetInnerHTML={{ __html: listData.content }} />
         </Col>
       </Row>
     </>

@@ -1,6 +1,10 @@
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import ReactDatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const PostForm =({ action, actionText, ...props }) => {
 
@@ -34,7 +38,7 @@ const PostForm =({ action, actionText, ...props }) => {
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="published">
                                 <Form.Label>Published</Form.Label>
-                                <Form.Control value={publishedDate} type="date" placeholder="dd-mm-yyyy" onChange={e => setPublishedDate(e.target.value)} />
+                                <ReactDatePicker selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
                             </Form.Group>
                         </Col>
                         <Form.Group className="mb-3" controlId="description">
@@ -43,7 +47,7 @@ const PostForm =({ action, actionText, ...props }) => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="content">
                             <Form.Label>Main content</Form.Label>
-                            <Form.Control value={content} type="text" as="textarea" rows={7} placeholder="Leave a comment here" onChange={e => setContent(e.target.value)} />
+                            <ReactQuill theme="snow" value={content} onChange={setContent} placeholder="Leave a comment here" />
                         </Form.Group>
                         <Button variant="primary" type="submit">{actionText}</Button>
                     </Form>
