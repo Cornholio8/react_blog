@@ -6,6 +6,8 @@ import 'react-quill/dist/quill.snow.css';
 import ReactDatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { getAllCategories } from '../../redux/catRedux';
+import { useSelector } from 'react-redux';
 
 const PostForm =({ action, actionText, ...props }) => {
 
@@ -16,16 +18,20 @@ const PostForm =({ action, actionText, ...props }) => {
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
+    const [category, setCategory] = useState(props.category || '');
     const [ contentError, setContentError ] = useState(false);
     const [ dateError, setDateError ] = useState(false);
+    const [categoryError, setCategoryError] = useState(false);
 
+    const categories = useSelector(getAllCategories);
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     const handleSubmit = () => {
-        setContentError(!content)
-        setDateError(!publishedDate)
+        setContentError(!content);
+        setDateError(!publishedDate);
+        setCategoryError(!category);
         if(content && publishedDate) {
-          action({ title, author, publishedDate, shortDescription, content, id });
+          action({ title, author, publishedDate, shortDescription, content, id, category });
         navigate('/');
         }
       };
@@ -58,6 +64,18 @@ const PostForm =({ action, actionText, ...props }) => {
                                 <Form.Label>Published</Form.Label>
                                 <ReactDatePicker selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
                                 {dateError && <small className="d-block form-text text-danger mt-2">Required</small>}
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Category</Form.Label>   
+                                <Form.Control {...register("category", { required: true})}
+                                    as="select"
+                                    placeholder="Category"
+                                    value={category ? category : "1"}
+                                    onChange={e => setCategory(e.target.value)}>
+                                        <option disabled value="1">Select category...</option>
+                                {   categories.map((category, index) => <option key={index} value={category}>{category}</option> )}   
+                                </Form.Control>            
+                                {categoryError && <small className="d-block form-text text-danger mt-2">Required</small>} 
                             </Form.Group>
                         </Col>
                         <Form.Group className="mb-3" controlId="description">

@@ -8,6 +8,8 @@ import Header from './components/views/Header';
 import Footer from './components/views/Footer';
 import AddPostForm from './components/features/AddPostForm.js';
 import EditPostForm from './components/features/EditPostForm';
+import Categories from './components/pages/Categories/Categories';
+import PostsByCategory from './components/pages/PostsByCategory/PostsByCategory';
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
           <Route path='/post/add' element={<AddPostForm />} />
           <Route path='/post/edit/:postId' element={<EditPostForm />} />
           <Route path='*' element={<NotFound />} />
+          <Route path='/categories' element={<Categories />} />
+          <Route path='category/:postCategory' element={<PostsByCategory />} />
         </Routes>
         <Footer />
       </Container>
